@@ -1,16 +1,20 @@
 # vector_algebra
 
-# addition(): returns the summation of an unspecified number of vectors
+# addition(): returns the summation of an unspecified number of vectors (vector)
 def addition(*vec):
     if not vec:
         return []
     
     vecLength = set(len(v) for v in vec)
-    if vecLength > 1:
+    if len(vecLength) > 1:
         raise ValueError("Vectors must be of the same dimension!")
 
     summation = [sum(pos) for pos in zip(*vec)]
     return summation
+
+# scalarMultiplication(): return the product of a scalar and a vector (vector)
+def scalarMultiplication(scalar, v):
+    return
 
 # dotProduct(): returns the dot product of two vectors (scalar)
 def dotProdcut(v1, v2):
@@ -36,3 +40,28 @@ def crossProduct(v1, v2):
     ]
 
     return cProduct
+
+# testing
+vecTest = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [10, 11, 12],
+    [-1, -2, -3],
+    [-4, -5, -6],
+    [-7, -8, -9],
+    [-10, -11, -12],
+    [0, 0, 0],  # Origin
+    [1.5, 2.5, 3.5],  # Non-integer coordinates
+    [2, -3, 1],  # Mixed positive and negative coordinates
+    [0.5, 0.5, 0.5],  # Uniformly distributed coordinates
+    [10, 0, 0],  # Along x-axis
+    [0, 10, 0],  # Along y-axis
+    [0, 0, 10],  # Along z-axis
+    [-10, 0, 0],  # Along -x-axis
+    [0, -10, 0],  # Along -y-axis
+    [0, 0, -10],  # Along -z-axis
+]
+
+print(addition(vecTest[0], vecTest[1], vecTest[4], vecTest[5]))
+print(addition(vecTest[0], vecTest[4]))
