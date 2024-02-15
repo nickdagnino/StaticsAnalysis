@@ -7,7 +7,7 @@ def scalar(scalar, vec):
         return []
     
     for pos in range(len(vec)):
-        vec[pos] = scalar*vec
+        vec[pos] = scalar*vec[pos]
 
     return vec
 
@@ -15,8 +15,8 @@ def scalar(scalar, vec):
 def magnitude(vec):
     mag = 0
 
-    for pos in range(leng(vec)):
-        mag = pow(vec[pos], 2)
+    for pos in range(len(vec)):
+        mag += pow(vec[pos], 2)
 
     return pow(mag, .5)
 
@@ -63,13 +63,12 @@ def unitVector(vec):
     if not vec:
         return []
     
-    magnitude = magnitude(vec)
+    mag = magnitude(vec)
 
     for pos in range(len(vec)):
-        vec[pos] = vec[pos]/magnitude
+        vec[pos] = vec[pos]/mag
     
     return vec
-
 
 
 # testing
@@ -96,4 +95,6 @@ vecTest = [
 
 #print(addition(vecTest[0], vecTest[1], vecTest[4], vecTest[5]))
 #print(addition(vecTest[0], vecTest[4]))
-print(scalar(1, vecTest[0]));
+#print(scalar(-1, vecTest[0]));
+#print(magnitude(vecTest[0]))
+print(unitVector(vecTest[0]))
