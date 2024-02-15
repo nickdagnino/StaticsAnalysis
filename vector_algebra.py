@@ -1,4 +1,25 @@
-# vector_algebra
+# file: vector_algebra
+# funtions: scalar(), magnitude(), addition(), dotProduct(), crossProduct(), unitVector()
+
+# scalar(): returns the product of a scalar and a vector (vector)
+def scalar(scalar, vec):
+    if not vec:
+        return []
+    
+    for pos in range(len(vec)):
+        vec[pos] = scalar*vec
+
+    return vec
+
+# magnitude(): returns the Euclidean magnitude of the vector (scalar)
+def magnitude(vec):
+    mag = 0
+
+    for pos in range(leng(vec)):
+        mag = pow(vec[pos], 2)
+
+    return pow(mag, .5)
+
 
 # addition(): returns the summation of an unspecified number of vectors (vector)
 def addition(*vec):
@@ -11,10 +32,6 @@ def addition(*vec):
 
     summation = [sum(pos) for pos in zip(*vec)]
     return summation
-
-# scalarMultiplication(): return the product of a scalar and a vector (vector)
-def scalarMultiplication(scalar, v):
-    return
 
 # dotProduct(): returns the dot product of two vectors (scalar)
 def dotProdcut(v1, v2):
@@ -41,6 +58,20 @@ def crossProduct(v1, v2):
 
     return cProduct
 
+# unitVector(): returnt the unit vector of the given vector (vector)
+def unitVector(vec):
+    if not vec:
+        return []
+    
+    magnitude = magnitude(vec)
+
+    for pos in range(len(vec)):
+        vec[pos] = vec[pos]/magnitude
+    
+    return vec
+
+
+
 # testing
 vecTest = [
     [1, 2, 3],
@@ -63,5 +94,6 @@ vecTest = [
     [0, 0, -10],  # Along -z-axis
 ]
 
-print(addition(vecTest[0], vecTest[1], vecTest[4], vecTest[5]))
-print(addition(vecTest[0], vecTest[4]))
+#print(addition(vecTest[0], vecTest[1], vecTest[4], vecTest[5]))
+#print(addition(vecTest[0], vecTest[4]))
+print(scalar(1, vecTest[0]));
